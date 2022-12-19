@@ -67,8 +67,8 @@ img {
 /*estilos propios*/
 .containerHeader {
   height: 100vh;
-  background-color: #081c3b;
-  background: linear-gradient(90deg, #3a47d5 0%, #081c3b 100%);
+  background-color: #18223C;
+  background: linear-gradient(90deg, #3a47d5 0%, #18223C 100%);
   display: flex;
   justify-content: center;
   align-items: center;
