@@ -555,9 +555,9 @@ Coded by www.creative-tim.com
                 </div>
               </div>
             </div>
-            <div class="col-lg-5 col-md-7 ml-auto mr-auto">
+             <div class="col-lg-5 col-md-7 ml-auto mr-auto">
               <div class="card card-contact card-raised">
-                <form role="form" id="contact-form" method="post">
+                <form role="form" id="contact-form" method="post" onsubmit="sendEmail(); reset(); return false;">
                   <div class="card-header text-center">
                     <h4 class="card-title">Contactanos</h4>
                   </div>
@@ -570,18 +570,19 @@ Coded by www.creative-tim.com
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                             </div>
-                            <input class="form-control" placeholder="Primer Nombre..." aria-label="Primer Nombre..." type="text">
+                            <input class="form-control" placeholder="Primer Nombre..." aria-label="Primer Nombre..." type="text" id="fname">
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6 pl-2">
                         <div class="form-group">
+              
                           <label>Apellido</label>
                           <div class="input-group">
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="ni ni-collection"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Apellido..." aria-label="Apellido">
+                            <input type="text" class="form-control" placeholder="Apellido..." aria-label="Apellido" id="lname">
                           </div>
                         </div>
                       </div>
@@ -592,12 +593,12 @@ Coded by www.creative-tim.com
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Email Aquí...">
+                        <input type="text" class="form-control" placeholder="Email Aquí..." id="aemail">
                       </div>
                     </div>
                     <div class="form-group">
                       <label>Tu Mensaje</label>
-                      <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+                      <textarea name="message" class="form-control" id="fmessage" rows="6"></textarea>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
@@ -616,6 +617,23 @@ Coded by www.creative-tim.com
                 </form>
               </div>
             </div>
+            <script src="https://smtpjs.com/v3/smtp.js"></script>
+            <script> 
+              function sendEmail(){
+                Email.send({
+                  SecureToken : "0ef8e174-cf9b-4583-a848-aceb3a9cf717",
+                  To : 'boris@fundacionmapocho.cl',
+                  From : "boris@fundacionmapocho.cl",
+                  Subject : "Nuevo formulario de contacto en Banca Material",
+                  Body : "Name: " + document.getElementById("fname").value + " " + document.getElementById("lname").value
+                  + "<br> EMAIL: " +document.getElementById("aemail").value
+                  + "<br> Message: " +document.getElementById("fmessage").value
+
+              }).then(
+                message => alert("Mensaje enviado correctamente!")
+              );
+              }
+            </script>
           </div>
         </div>
       </div>
